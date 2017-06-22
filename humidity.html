@@ -1,0 +1,42 @@
+<link rel="import" href="/plugins/shared-styles/shared-styles.html">
+<link rel="import" href="/plugins/vendors/font-awesome/font-awesome.html">
+
+<script src="./socketio.js"></script>
+<dom-module id="humidity-item">
+  <template>
+    <style include="shared-styles"></style>
+    <style include="font-awesome"></style>
+    <h1><i class="fa fa-tint" aria-hidden="true"></i> {{name}} - {{value}}%</h1>
+  </template>
+  <script>
+    (() => {
+      class Humidity extends Polymer.Element {
+        static get is () { return 'humidity-item' }
+
+        static get properties () {
+          return {
+            name: String,
+            socket: Object,
+            socket_url: String,
+            value: Number
+          }
+        }
+
+        connectedCallback () {
+          super.connectedCallback();
+          this.socket = io.connect(this.socket_url)
+
+          this.socket.on('humidity', data => {
+            data = JSON.parse(data)
+            if (data.value !== undefined) {
+              this.name = data.name;
+              this.value = data.value;
+            }
+          })
+        }
+      }
+
+      customElements.define(Humidity.is, Humidity)
+    })();
+  </script>
+</dom-module>
