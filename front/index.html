@@ -1,8 +1,9 @@
-<link rel="import" href="/plugins/shared-styles/shared-styles.html">
-<link rel="import" href="/plugins/vendors/font-awesome/font-awesome.html">
+<link rel="import" href="./bower_components/polymer/polymer-element.html">
+<link rel="import" href="./font-awesome.html">
 
 <script src="./socketio.js"></script>
-<dom-module id="humidity-item">
+
+<dom-module id="marcel-plugin-humidity">
   <template>
     <style include="shared-styles"></style>
     <style include="font-awesome"></style>
@@ -11,7 +12,7 @@
   <script>
     (() => {
       class Humidity extends Polymer.Element {
-        static get is () { return 'humidity-item' }
+        static get is () { return 'marcel-plugin-humidity' }
 
         static get properties () {
           return {

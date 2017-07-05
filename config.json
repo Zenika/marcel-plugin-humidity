@@ -1,0 +1,14 @@
+{
+  "name": "Humidity",
+  "description": "Displays the humidity from websocket data",
+  "elementName": "marcel-plugin-humidity",
+  "files": ["index.html"],
+  "props": [
+    { 
+      "name": "socket_url",
+      "description": "Url on which the websocket have to connect", 
+      "type": "String", 
+      "defaultValue": ""
+    }
+  ]
+}
